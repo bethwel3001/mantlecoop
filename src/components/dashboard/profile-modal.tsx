@@ -22,7 +22,7 @@ interface ProfileModalProps {
 export function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-md bg-card/80 backdrop-blur-sm border-border/20">
+      <DialogContent className="max-w-sm bg-card/80 backdrop-blur-sm border-border/20">
         <DialogHeader className="items-center text-center">
            <div className="relative">
               <Avatar className="h-24 w-24 border-4 border-background">

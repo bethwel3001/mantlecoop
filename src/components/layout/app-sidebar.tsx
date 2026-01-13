@@ -28,13 +28,20 @@ import {
 } from '@/components/ui/sidebar';
 import { Separator } from '../ui/separator';
 
+const Logo = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 26V6L16 16L6 26Z" fill="currentColor" className="text-primary"/>
+    <path d="M16 16L26 6V26L16 16Z" fill="currentColor" className="text-sidebar-foreground/50"/>
+  </svg>
+);
+
 export function AppSidebar() {
   return (
     <Sidebar>
       <SidebarHeader>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-            <ChevronsRight className="text-primary-foreground" />
+          <div className="w-8 h-8 rounded-lg bg-sidebar-accent flex items-center justify-center">
+            <Logo />
           </div>
           <h1 className="text-lg font-semibold tracking-wider">MantleCoop</h1>
         </div>

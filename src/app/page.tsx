@@ -1,14 +1,22 @@
-import { Button } from '@/components/ui/button';
 import { ArrowRight, Briefcase, HandCoins, Zap } from 'lucide-react';
 import Link from 'next/link';
+import { Button } from '@/components/ui/button';
+
+const Logo = () => (
+  <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M6 26V6L16 16L6 26Z" fill="currentColor" className="text-primary"/>
+    <path d="M16 16L26 6V26L16 16Z" fill="currentColor" className="text-foreground/50"/>
+  </svg>
+);
+
 
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
       <header className="px-4 lg:px-6 h-16 flex items-center border-b">
-        <Link href="#" className="flex items-center justify-center" prefetch={false}>
-          <Zap className="h-6 w-6 text-primary" />
-          <span className="sr-only">MantleCoop</span>
+        <Link href="#" className="flex items-center justify-center gap-2" prefetch={false}>
+          <Logo />
+          <span className="font-semibold text-lg">MantleCoop</span>
         </Link>
         <nav className="ml-auto flex gap-4 sm:gap-6">
           <Link href="#about" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
@@ -26,8 +34,11 @@ export default function Home() {
         </nav>
       </header>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 text-center">
-          <div className="container px-4 md:px-6">
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 text-center relative overflow-hidden">
+           <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-background to-transparent z-0"></div>
+            <div className="absolute inset-0 -z-10 h-full w-full bg-background bg-[linear-gradient(to_right,#8080800a_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px]"></div>
+            <div className="absolute bottom-0 left-0 right-0 top-0 bg-[radial-gradient(circle_500px_at_50%_200px,theme(colors.primary/15%),transparent)] -z-10"></div>
+          <div className="container px-4 md:px-6 relative">
             <div className="space-y-4">
               <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl/none">
                 Decentralized Finance for Cooperatives
@@ -40,7 +51,7 @@ export default function Home() {
             <div className="mt-6 flex flex-col gap-2 min-[400px]:flex-row justify-center">
               <Link
                 href="/login"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 glow-primary-hover"
                 prefetch={false}
               >
                 Join Now
@@ -124,9 +135,13 @@ export default function Home() {
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
-              <Button type="submit" size="lg" className="w-full">
+               <Link
+                href="/login"
+                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full glow-primary-hover"
+                prefetch={false}
+              >
                 Explore
-              </Button>
+              </Link>
             </div>
           </div>
         </section>

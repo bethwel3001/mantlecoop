@@ -1,7 +1,8 @@
 import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
+import { Card, CardContent } from '@/components/ui/card';
+import { Download } from 'lucide-react';
 
 const Logo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -11,7 +12,7 @@ const Logo = () => (
 );
 
 const MetamaskIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+    <svg width="48" height="48" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M43.25 153.37L101 104.62L69.25 76.87L43.25 153.37Z" fill="#E2761B"/>
         <path d="M101.001 104.62L69.251 76.87L111.501 51.37L101.001 104.62Z" fill="#E4761B"/>
         <path d="M101.001 104.62L111.501 51.37L133.501 32.37L144.501 59.87L101.001 104.62Z" fill="#E4761B"/>
@@ -27,14 +28,14 @@ const MetamaskIcon = () => (
 );
 
 const BaseIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+    <svg width="48" height="48" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <circle cx="50" cy="50" r="50" fill="#0052FF"/>
         <path d="M26.5625 63.8125V36.6875H48.1875C53.0312 36.6875 57 37.8125 60.0625 40.0625C63.125 42.3125 64.6562 45.4062 64.6562 49.3438C64.6562 53.2812 63.125 56.375 60.0625 58.625C57 60.875 53.0312 62 48.1875 62H29.6875V63.8125H26.5625ZM38.4375 54.3125H47.125C49.5938 54.3125 51.5312 53.7812 52.9375 52.7188C54.3438 51.6562 55.0469 50.1562 55.0469 48.2188C55.0469 46.2812 54.3438 44.7812 52.9375 43.7188C51.5312 42.6562 49.5938 42.125 47.125 42.125H38.4375V54.3125Z" fill="white"/>
     </svg>
 );
 
 const EthereumIcon = () => (
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 2.69L5.22 12L12 15.69L18.78 12L12 2.69Z" fill="#627EEA"/>
         <path d="M12 16.69L5.22 13L12 21.31L18.78 13L12 16.69Z" fill="#627EEA"/>
         <path d="M12 15.69L18.78 12L12 2.69V15.69Z" fill="#4664C5"/>
@@ -47,28 +48,36 @@ const partners = [
   {
     name: 'Metamask',
     logo: <MetamaskIcon />,
+    description: 'The leading self-custodial wallet, providing a secure gateway to the decentralized web.'
   },
   {
     name: 'Base',
     logo: <BaseIcon />,
+    description: 'An Ethereum L2, incubated by Coinbase, offering a low-cost and developer-friendly environment.'
   },
   {
     name: 'Ethereum',
     logo: <EthereumIcon />,
-  },
-  {
-    name: 'Metamask',
-    logo: <MetamaskIcon />,
-  },
-  {
-    name: 'Base',
-    logo: <BaseIcon />,
-  },
-  {
-    name: 'Ethereum',
-    logo: <EthereumIcon />,
+    description: 'The world’s programmable blockchain, pioneering smart contracts and dApps.'
   },
 ];
+
+const AppStoreIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2.5C6.7 2.5 2.5 6.7 2.5 12s4.2 9.5 9.5 9.5 9.5-4.2 9.5-9.5-4.2-9.5-9.5-9.5z"/>
+    <path d="M15.5 12.5a.5.5 0 0 0 .5-.5V10a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2a.5.5 0 0 0 .5.5"/>
+    <path d="M12 16.5a2.5 2.5 0 0 1-2.5-2.5v-1h5v1a2.5 2.5 0 0 1-2.5 2.5z"/>
+  </svg>
+);
+
+const PlayStoreIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2.5 12L12 2.5l9.5 9.5-9.5 9.5z"/>
+    <path d="M12 2.5L21.5 12 12 21.5 2.5 12z"/>
+    <path d="M12 2.5v19"/>
+    <path d="M2.5 12h19"/>
+  </svg>
+);
 
 export default function Home() {
   return (
@@ -163,8 +172,16 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12">
-               <InfiniteMovingCards items={partners.map((p, i) => React.cloneElement(p.logo, { key: `${p.name}-${i}` }))} direction="right" speed="slow" />
+            <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 py-12 sm:grid-cols-3">
+              {partners.map((partner) => (
+                <Card key={partner.name} className="flex flex-col items-center text-center p-6 bg-card/50">
+                  <CardContent className="flex flex-col items-center gap-4">
+                    {partner.logo}
+                    <h3 className="text-xl font-bold">{partner.name}</h3>
+                    <p className="text-muted-foreground text-sm">{partner.description}</p>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
           </div>
         </section>
@@ -189,16 +206,61 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full shrink-0 items-center px-4 md:px-6 border-t">
-        <p className="text-xs text-muted-foreground">&copy; 2024 MantleCoop. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Terms of Service
-          </Link>
-          <Link href="#" className="text-xs hover:underline underline-offset-4" prefetch={false}>
-            Privacy
-          </Link>
-        </nav>
+      <footer className="w-full bg-secondary text-secondary-foreground border-t">
+        <div className="container grid grid-cols-1 md:grid-cols-4 gap-8 px-4 py-12 md:px-6">
+          <div className="space-y-4">
+            <Link href="#" className="flex items-center gap-2" prefetch={false}>
+              <Logo />
+              <span className="font-semibold text-lg">MantleCoop</span>
+            </Link>
+            <p className="text-sm text-muted-foreground">On-Chain Cooperative Finance for the Real World.</p>
+          </div>
+          <div className="space-y-2">
+            <h4 className="font-semibold">Community</h4>
+            <nav className="flex flex-col gap-1">
+              <Link href="#" className="text-sm hover:underline" prefetch={false}>Discord</Link>
+              <Link href="#" className="text-sm hover:underline" prefetch={false}>X (Twitter)</Link>
+              <Link href="#" className="text-sm hover:underline" prefetch={false}>Telegram</Link>
+            </nav>
+          </div>
+          <div className="space-y-2">
+            <h4 className="font-semibold">Resources</h4>
+            <nav className="flex flex-col gap-1">
+              <Link href="#" className="text-sm hover:underline" prefetch={false}>Documentation</Link>
+              <Link href="#" className="text-sm hover:underline" prefetch={false}>Blog</Link>
+              <Link href="#" className="text-sm hover:underline" prefetch={false}>Support</Link>
+            </nav>
+          </div>
+          <div className="space-y-4">
+            <h4 className="font-semibold">Mobile App Coming Soon</h4>
+            <p className="text-sm text-muted-foreground">Get notified when our mobile app is available.</p>
+            <div className="flex gap-2">
+              <Button variant="outline" className="w-full justify-start gap-2">
+                <AppStoreIcon />
+                <div>
+                  <div className="text-xs">Download on the</div>
+                  <div className="text-sm font-semibold -mt-1">App Store</div>
+                </div>
+              </Button>
+              <Button variant="outline" className="w-full justify-start gap-2">
+                <PlayStoreIcon />
+                <div>
+                  <div className="text-xs">GET IT ON</div>
+                  <div className="text-sm font-semibold -mt-1">Google Play</div>
+                </div>
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="border-t">
+          <div className="container flex flex-col sm:flex-row justify-between items-center py-4 px-4 md:px-6 text-xs text-muted-foreground">
+            <p>&copy; 2024 MantleCoop. All rights reserved.</p>
+            <nav className="flex gap-4 sm:gap-6 mt-2 sm:mt-0">
+              <Link href="#" className="hover:underline" prefetch={false}>Terms of Service</Link>
+              <Link href="#" className="hover:underline" prefetch={false}>Privacy Policy</Link>
+            </nav>
+          </div>
+        </div>
       </footer>
     </div>
   );

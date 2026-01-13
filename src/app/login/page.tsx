@@ -18,15 +18,8 @@ const GoogleIcon = () => (
   </svg>
 );
 
-const BinanceIcon = () => (
-    <svg width="24" height="24" viewBox="0 0 96 96" fill="#F0B90B" xmlns="http://www.w3.org/2000/svg">
-        <path d="M66.42 48L48 66.42L29.58 48L48 29.58L66.42 48ZM48 96C21.49 96 0 74.51 0 48C0 21.49 21.49 0 48 0C74.51 0 96 21.49 96 48C96 74.51 74.51 96 48 96Z" />
-        <path d="M78.69 36.42L60.27 18L48 30.27L35.73 18L17.31 36.42L30.27 48L17.31 59.58L35.73 78L48 65.73L60.27 78L78.69 59.58L65.73 48L78.69 36.42Z" fill="#F0B90B"/>
-    </svg>
-);
-
 const XIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 16 16">
         <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.602.75Zm-.81 12.95h1.28L3.54 2.15H2.25l8.55 11.55Z"/>
     </svg>
 );
@@ -54,7 +47,7 @@ export default function LoginPage() {
                 <CardTitle className="text-2xl font-headline">Create an Account</CardTitle>
                 <CardDescription>Enter your information to get started.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3">
                 <div className="space-y-2">
                   <Label htmlFor="signup-name">Name</Label>
                   <Input id="signup-name" type="text" placeholder="John Doe" />
@@ -69,17 +62,16 @@ export default function LoginPage() {
                 </div>
                 <Button type="submit" className="w-full glow-primary-hover">Sign Up</Button>
                 
-                <div className="relative my-4">
+                <div className="relative my-2">
                     <Separator />
-                    <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">OR CONTINUE WITH</span>
+                    <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">OR</span>
                 </div>
 
                 <div className="flex justify-center gap-4">
-                  <Button variant="outline" size="icon"><GoogleIcon /></Button>
-                  <Button variant="outline" size="icon"><BinanceIcon /></Button>
-                  <Button variant="outline" size="icon"><XIcon /></Button>
+                  <Button variant="outline" size="icon" className="h-9 w-9"><GoogleIcon /></Button>
+                  <Button variant="outline" size="icon" className="h-9 w-9"><XIcon /></Button>
                 </div>
-                <div className="text-center text-sm mt-4">
+                <div className="text-center text-sm mt-3">
                   Already have an account?{' '}
                   <button onClick={() => setIsSignUp(false)} className="text-primary hover:underline font-semibold">
                     Log In
@@ -93,7 +85,7 @@ export default function LoginPage() {
                 <CardTitle className="text-2xl font-headline">Welcome Back</CardTitle>
                 <CardDescription>Enter your credentials to access your account.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-3">
                 <div className="space-y-2">
                   <Label htmlFor="login-email">Email</Label>
                   <Input id="login-email" type="email" placeholder="m@example.com" />
@@ -107,18 +99,17 @@ export default function LoginPage() {
                   <Button variant="secondary" className="w-full">Login as Demo</Button>
                 </Link>
 
-                <div className="relative my-4">
+                <div className="relative my-2">
                     <Separator />
-                    <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">OR CONTINUE WITH</span>
+                    <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">OR</span>
                 </div>
 
                 <div className="flex justify-center gap-4">
-                  <Button variant="outline" size="icon"><GoogleIcon /></Button>
-                  <Button variant="outline" size="icon"><BinanceIcon /></Button>
-                  <Button variant="outline" size="icon"><XIcon /></Button>
+                  <Button variant="outline" size="icon" className="h-9 w-9"><GoogleIcon /></Button>
+                  <Button variant="outline" size="icon" className="h-9 w-9"><XIcon /></Button>
                 </div>
 
-                <div className="text-center text-sm mt-4">
+                <div className="text-center text-sm mt-3">
                   Don't have an account?{' '}
                   <button onClick={() => setIsSignUp(true)} className="text-primary hover:underline font-semibold">
                     Sign Up

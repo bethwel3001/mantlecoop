@@ -1,7 +1,7 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 
 export const InfiniteMovingCards = ({
   items,
@@ -88,7 +88,7 @@ export const InfiniteMovingCards = ({
       >
         {items.map((item, idx) => (
           <li
-            className="w-[250px] max-w-full relative rounded-2xl flex-shrink-0 px-8 py-6 md:w-[300px] flex justify-center items-center"
+            className="w-auto max-w-full relative rounded-2xl flex-shrink-0 px-8 py-6 flex justify-center items-center"
             key={idx}
           >
            {item}

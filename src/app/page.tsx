@@ -2,6 +2,9 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Menu } from 'lucide-react';
+import { ModeToggle } from '@/components/mode-toggle';
 
 const Logo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -99,12 +102,12 @@ const TelegramIcon = () => (
 export default function Home() {
   return (
     <div className="flex flex-col min-h-screen bg-background text-foreground">
-      <header className="px-4 lg:px-6 h-16 flex items-center border-b">
+      <header className="px-4 lg:px-6 h-16 flex items-center border-b sticky top-0 z-50 bg-background/80 backdrop-blur-sm">
         <Link href="#" className="flex items-center justify-center gap-2" prefetch={false}>
           <Logo />
           <span className="font-semibold text-lg">MantleCoop</span>
         </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
+        <nav className="ml-auto hidden md:flex gap-4 sm:gap-6 items-center">
           <Link href="#about" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             About
           </Link>
@@ -114,10 +117,38 @@ export default function Home() {
           <Link href="#explore" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Explore
           </Link>
-          <Link href="/dashboard" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
-            Dashboard
-          </Link>
+          <ModeToggle />
         </nav>
+        <div className="ml-auto md:hidden">
+            <Sheet>
+                <SheetTrigger asChild>
+                    <Button variant="ghost" size="icon">
+                        <Menu className="h-6 w-6" />
+                        <span className="sr-only">Toggle navigation menu</span>
+                    </Button>
+                </SheetTrigger>
+                <SheetContent side="right">
+                    <div className="grid gap-4 p-4">
+                        <Link href="#" className="flex items-center justify-center gap-2" prefetch={false}>
+                            <Logo />
+                            <span className="font-semibold text-lg">MantleCoop</span>
+                        </Link>
+                        <nav className="grid gap-2 text-center">
+                            <Link href="#about" className="text-lg font-medium hover:underline underline-offset-4" prefetch={false}>
+                                About
+                            </Link>
+                            <Link href="#partners" className="text-lg font-medium hover:underline underline-offset-4" prefetch={false}>
+                                Partners
+                            </Link>
+                            <Link href="#explore" className="text-lg font-medium hover:underline underline-offset-4" prefetch={false}>
+                                Explore
+                            </Link>
+                        </nav>
+                         <ModeToggle />
+                    </div>
+                </SheetContent>
+            </Sheet>
+        </div>
       </header>
       <main className="flex-1">
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 text-center relative overflow-hidden">

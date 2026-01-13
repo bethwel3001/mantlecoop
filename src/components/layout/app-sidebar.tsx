@@ -10,6 +10,9 @@ import {
   ShieldCheck,
   User,
   Wallet,
+  LogOut,
+  History,
+  Building
 } from 'lucide-react';
 
 import {
@@ -23,10 +26,7 @@ import {
   SidebarGroup,
   SidebarGroupLabel,
 } from '@/components/ui/sidebar';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Separator } from '../ui/separator';
-
-const userAvatar = PlaceHolderImages.find(p => p.id === 'user-avatar');
 
 export function AppSidebar() {
   return (
@@ -41,38 +41,40 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton
-              tooltip="Dashboard"
-              isActive
-              className="group"
-            >
+        <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Dashboard" isActive className="group">
               <Gauge className="group-data-[active=true]:text-primary group-data-[active=true]:drop-shadow-[0_0_5px_theme(colors.primary)]" />
               <span>Dashboard</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
           <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Cooperative Vaults">
-              <Landmark />
-              <span>Vaults</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Lending & Credit">
-              <CircleDollarSign />
-              <span>Lending</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Governance">
-              <ShieldCheck />
-              <span>Governance</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Yield Strategies">
+            <SidebarMenuButton tooltip="Yield">
               <Coins />
               <span>Yield</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Lending History">
+              <History />
+              <span>Lending History</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Payment History">
+              <History />
+              <span>Payment History</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip="Saccos/Cooperatives">
+              <Building />
+              <span>Cooperatives</span>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          <SidebarMenuItem>
+            <SidebarMenuButton tooltip="My Wallet">
+              <Wallet />
+              <span>My Wallet</span>
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -80,7 +82,6 @@ export function AppSidebar() {
       <SidebarFooter>
         <Separator className="my-2" />
         <SidebarGroup>
-          <SidebarGroupLabel>User Account</SidebarGroupLabel>
           <SidebarMenu>
              <SidebarMenuItem>
                 <SidebarMenuButton tooltip="Profile">
@@ -89,9 +90,9 @@ export function AppSidebar() {
                 </SidebarMenuButton>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Wallet">
-                    <Wallet />
-                    <span>My Wallet</span>
+                <SidebarMenuButton tooltip="Logout">
+                    <LogOut />
+                    <span>Logout</span>
                 </SidebarMenuButton>
             </SidebarMenuItem>
           </SidebarMenu>

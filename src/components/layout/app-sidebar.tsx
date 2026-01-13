@@ -14,7 +14,8 @@ import {
   History,
   Building
 } from 'lucide-react';
-
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import {
   Sidebar,
   SidebarHeader,
@@ -36,6 +37,17 @@ const Logo = () => (
 );
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
+  const menuItems = [
+    { href: '/dashboard', icon: Gauge, label: 'Dashboard' },
+    { href: '/dashboard/yield', icon: Coins, label: 'Yield' },
+    { href: '/dashboard/lending-history', icon: History, label: 'Lending History' },
+    { href: '/dashboard/payment-history', icon: History, label: 'Payment History' },
+    { href: '/dashboard/cooperatives', icon: Building, label: 'Cooperatives' },
+    { href: '/dashboard/wallet', icon: Wallet, label: 'My Wallet' },
+  ];
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -43,47 +55,21 @@ export function AppSidebar() {
           <div className="w-8 h-8 rounded-lg bg-sidebar-accent flex items-center justify-center">
             <Logo />
           </div>
-          <h1 className="text-lg font-semibold tracking-wider">MantleCoop</h1>
+          <h1 className="text-lg font-semibold tracking-wider font-headline">MantleCoop</h1>
         </div>
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-        <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Dashboard" isActive className="group">
-              <Gauge className="group-data-[active=true]:text-primary group-data-[active=true]:drop-shadow-[0_0_5px_theme(colors.primary)]" />
-              <span>Dashboard</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Yield">
-              <Coins />
-              <span>Yield</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Lending History">
-              <History />
-              <span>Lending History</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Payment History">
-              <History />
-              <span>Payment History</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="Saccos/Cooperatives">
-              <Building />
-              <span>Cooperatives</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-          <SidebarMenuItem>
-            <SidebarMenuButton tooltip="My Wallet">
-              <Wallet />
-              <span>My Wallet</span>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
+          {menuItems.map((item) => (
+            <SidebarMenuItem key={item.href}>
+              <Link href={item.href} passHref>
+                <SidebarMenuButton tooltip={item.label} isActive={pathname.startsWith(item.href)} className="group">
+                  <item.icon className="group-data-[active=true]:text-primary group-data-[active=true]:drop-shadow-[0_0_5px_theme(colors.primary)]" />
+                  <span>{item.label}</span>
+                </SidebarMenuButton>
+              </Link>
+            </SidebarMenuItem>
+          ))}
         </SidebarMenu>
       </SidebarContent>
       <SidebarFooter>
@@ -91,16 +77,20 @@ export function AppSidebar() {
         <SidebarGroup>
           <SidebarMenu>
              <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Profile">
-                    <User />
-                    <span>Profile</span>
-                </SidebarMenuButton>
+                <Link href="/dashboard/profile" passHref>
+                    <SidebarMenuButton tooltip="Profile" isActive={pathname === '/dashboard/profile'}>
+                        <User />
+                        <span>Profile</span>
+                    </SidebarMenuButton>
+                </Link>
             </SidebarMenuItem>
             <SidebarMenuItem>
-                <SidebarMenuButton tooltip="Logout">
-                    <LogOut />
-                    <span>Logout</span>
-                </SidebarMenuButton>
+                <Link href="/login" passHref>
+                    <SidebarMenuButton tooltip="Logout">
+                        <LogOut />
+                        <span>Logout</span>
+                    </SidebarMenuButton>
+                </Link>
             </SidebarMenuItem>
           </SidebarMenu>
         </SidebarGroup>

@@ -1,4 +1,4 @@
-import { ArrowRight, Briefcase, HandCoins, Zap } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
@@ -7,6 +7,39 @@ const Logo = () => (
     <path d="M6 26V6L16 16L6 26Z" fill="currentColor" className="text-primary"/>
     <path d="M16 16L26 6V26L16 16Z" fill="currentColor" className="text-foreground/50"/>
   </svg>
+);
+
+const MetamaskIcon = () => (
+    <svg width="40" height="40" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+        <path d="M43.25 153.37L101 104.62L69.25 76.87L43.25 153.37Z" fill="#E2761B"/>
+        <path d="M101.001 104.62L69.251 76.87L111.501 51.37L101.001 104.62Z" fill="#E4761B"/>
+        <path d="M101.001 104.62L111.501 51.37L133.501 32.37L144.501 59.87L101.001 104.62Z" fill="#E4761B"/>
+        <path d="M101.001 104.62L144.501 59.87L154.001 104.62L101.001 104.62Z" fill="#D7C1B3"/>
+        <path d="M43.25 153.37L101 104.62L85.75 125.12L68.5 154.12L43.25 153.37Z" fill="#233447"/>
+        <path d="M85.75 125.12L101 104.62L154 104.62L170.25 125.12L85.75 125.12Z" fill="#763E1A"/>
+        <path d="M85.75 125.12L170.25 125.12L181.75 163.62L161.75 181.37L85.75 125.12Z" fill="#F6851B"/>
+        <path d="M181.75 163.62L161.75 181.37L138.5 223.12L194 180.62L181.75 163.62Z" fill="#F6851B"/>
+        <path d="M187.25 76.87L154 104.62L170.25 125.12L212.75 153.37L187.25 76.87Z" fill="#F6851B"/>
+        <path d="M144.5 59.87L154 104.62L187.25 76.87L144.5 59.87Z" fill="#C0AD9E"/>
+        <path d="M133.5 32.37L144.5 59.87L187.25 76.87L133.5 32.37Z" fill="#E4761B"/>
+    </svg>
+);
+
+const BaseIcon = () => (
+    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+        <circle cx="50" cy="50" r="50" fill="#0052FF"/>
+        <path d="M26.5625 63.8125V36.6875H48.1875C53.0312 36.6875 57 37.8125 60.0625 40.0625C63.125 42.3125 64.6562 45.4062 64.6562 49.3438C64.6562 53.2812 63.125 56.375 60.0625 58.625C57 60.875 53.0312 62 48.1875 62H29.6875V63.8125H26.5625ZM38.4375 54.3125H47.125C49.5938 54.3125 51.5312 53.7812 52.9375 52.7188C54.3438 51.6562 55.0469 50.1562 55.0469 48.2188C55.0469 46.2812 54.3438 44.7812 52.9375 43.7188C51.5312 42.6562 49.5938 42.125 47.125 42.125H38.4375V54.3125Z" fill="white"/>
+    </svg>
+);
+
+const EthereumIcon = () => (
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-muted-foreground">
+        <path d="M12 2.69L5.22 12L12 15.69L18.78 12L12 2.69Z" fill="#627EEA"/>
+        <path d="M12 16.69L5.22 13L12 21.31L18.78 13L12 16.69Z" fill="#627EEA"/>
+        <path d="M12 15.69L18.78 12L12 2.69V15.69Z" fill="#4664C5"/>
+        <path d="M12 16.69L12 21.31L18.78 13L12 16.69Z" fill="#4664C5"/>
+        <path d="M12 15.69L5.22 12L12 16.69V15.69Z" fill="#899DF0"/>
+    </svg>
 );
 
 
@@ -105,22 +138,22 @@ export default function Home() {
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
               <div className="flex justify-center">
-                <Briefcase className="h-10 w-10 text-muted-foreground" />
+                <MetamaskIcon />
               </div>
               <div className="flex justify-center">
-                <HandCoins className="h-10 w-10 text-muted-foreground" />
+                <BaseIcon />
               </div>
               <div className="flex justify-center">
-                <Zap className="h-10 w-10 text-muted-foreground" />
+                <EthereumIcon />
               </div>
               <div className="flex justify-center">
-                <Briefcase className="h-10 w-10 text-muted-foreground" />
+                <MetamaskIcon />
               </div>
               <div className="flex justify-center">
-                <HandCoins className="h-10 w-10 text-muted-foreground" />
+                <BaseIcon />
               </div>
               <div className="flex justify-center">
-                <Zap className="h-10 w-10 text-muted-foreground" />
+                <EthereumIcon />
               </div>
             </div>
           </div>

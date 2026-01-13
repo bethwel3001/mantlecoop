@@ -2,7 +2,6 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Download } from 'lucide-react';
 
 const Logo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -63,21 +62,39 @@ const partners = [
 ];
 
 const AppStoreIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M12 2.5C6.7 2.5 2.5 6.7 2.5 12s4.2 9.5 9.5 9.5 9.5-4.2 9.5-9.5-4.2-9.5-9.5-9.5z"/>
-    <path d="M15.5 12.5a.5.5 0 0 0 .5-.5V10a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2a.5.5 0 0 0 .5.5"/>
-    <path d="M12 16.5a2.5 2.5 0 0 1-2.5-2.5v-1h5v1a2.5 2.5 0 0 1-2.5 2.5z"/>
-  </svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.665 13.425C18.636 15.225 17.485 16.6 15.845 16.6C14.195 16.6 13.015 15.225 13.045 13.425C13.015 11.625 14.195 10.275 15.835 10.275C17.485 10.275 18.636 11.625 18.665 13.425ZM11.125 13.425C11.155 17.525 14.395 20.25 15.835 20.25C17.275 20.25 20.515 17.525 20.485 13.425C20.515 9.325 17.275 6.6 15.835 6.6C14.395 6.6 11.155 9.325 11.125 13.425ZM10.235 5.5875C11.1461 4.75232 12.1812 4.09549 13.3 3.675C12.355 4.515 11.625 5.565 11.165 6.75C10.705 7.935 10.525 9.195 10.615 10.455C9.28549 10.1506 8.04631 9.47951 7.025 8.505C7.025 8.505 5.095 7.005 3.935 9.15C2.775 11.295 4.585 13.425 5.715 14.655C6.845 15.885 7.825 18 9.635 18C11.445 18 12.035 16.89 13.255 16.89C14.475 16.89 15.035 18 16.845 18C18.655 18 19.635 15.885 20.765 14.655C21.365 14.025 21.655 13.245 21.695 12.555C20.665 12.285 18.915 11.415 18.885 9.12C18.885 7.32 20.065 6.135 20.245 5.835C18.435 3.93 16.145 3.735 15.235 3.735C13.425 3.735 11.775 4.755 10.235 5.5875Z"/>
+    </svg>
 );
 
 const PlayStoreIcon = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M2.5 12L12 2.5l9.5 9.5-9.5 9.5z"/>
-    <path d="M12 2.5L21.5 12 12 21.5 2.5 12z"/>
-    <path d="M12 2.5v19"/>
-    <path d="M2.5 12h19"/>
-  </svg>
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2.39999 1.07996L17.88 11.64C18.42 11.97 18.42 12.75 17.88 13.08L2.39999 23.64C1.85999 23.97 1.19999 23.64 1.19999 22.98V1.73996C1.19999 1.07996 1.85999 0.749956 2.39999 1.07996Z" fill="#00A0FF"/>
+        <path d="M17.88 11.64L21.72 9.35996C22.26 9.02996 22.26 8.24996 21.72 7.91996L18.84 6.02996L2.39999 1.07996L17.88 11.64Z" fill="#00D66B"/>
+        <path d="M2.4 23.64L18.84 18.69L21.72 16.8C22.26 16.47 22.26 15.69 21.72 15.36L17.88 13.08L2.4 23.64Z" fill="#FFC900"/>
+        <path d="M18.84 18.69L2.4 23.64V1.07996L18.84 6.02996V18.69Z" fill-opacity="0.08"/>
+        <path d="M18.84 18.69V6.02996L2.39999 1.07996V23.64L18.84 18.69Z" fill-opacity="0.08"/>
+    </svg>
 );
+
+const DiscordIcon = () => (
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20.222 0H3.778A2.222 2.222 0 0 0 1.556 2.222v15.556a2.222 2.222 0 0 0 2.222 2.222h11.11L22.444 24V2.222A2.222 2.222 0 0 0 20.222 0ZM8.444 13.889a2.222 2.222 0 1 1-2.222-2.223 2.222 2.222 0 0 1 2.222 2.223Zm4.445 0a2.222 2.222 0 1 1-2.223-2.223 2.222 2.222 0 0 1 2.223 2.223Zm4.444 0a2.222 2.222 0 1 1-2.222-2.223 2.222 2.222 0 0 1 2.222 2.223Z"/>
+    </svg>
+);
+
+const XIcon = () => (
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231L18.244 2.25ZM16.91 19.95h2.035L7.844 4.05H5.66l11.25 15.9Z"/>
+    </svg>
+);
+
+const TelegramIcon = () => (
+    <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22.031 1.945c-1.07-.42-2.235-.43-3.32.08L3.102 8.448c-1.57.72-1.638 2.89-.108 3.704l4.842 2.55 2.55 4.842c.813 1.53 2.983 1.463 3.704-.108l6.423-15.61c.51-1.238.11-2.648-.483-3.321ZM7.568 12.398l10.23-7.71-6.898 6.898-3.332.812Zm5.53 5.53l.812-3.332 6.898-6.898-7.71 10.23Z"/>
+    </svg>
+);
+
 
 export default function Home() {
   return (
@@ -217,10 +234,16 @@ export default function Home() {
           </div>
           <div className="space-y-2">
             <h4 className="font-semibold">Community</h4>
-            <nav className="flex flex-col gap-1">
-              <Link href="#" className="text-sm hover:underline" prefetch={false}>Discord</Link>
-              <Link href="#" className="text-sm hover:underline" prefetch={false}>X (Twitter)</Link>
-              <Link href="#" className="text-sm hover:underline" prefetch={false}>Telegram</Link>
+            <nav className="flex flex-col gap-2">
+              <Link href="#" className="flex items-center gap-2 text-sm hover:underline" prefetch={false}>
+                <DiscordIcon /> Discord
+              </Link>
+              <Link href="#" className="flex items-center gap-2 text-sm hover:underline" prefetch={false}>
+                <XIcon /> X (Twitter)
+              </Link>
+              <Link href="#" className="flex items-center gap-2 text-sm hover:underline" prefetch={false}>
+                <TelegramIcon /> Telegram
+              </Link>
             </nav>
           </div>
           <div className="space-y-2">
@@ -234,7 +257,7 @@ export default function Home() {
           <div className="space-y-4">
             <h4 className="font-semibold">Mobile App Coming Soon</h4>
             <p className="text-sm text-muted-foreground">Get notified when our mobile app is available.</p>
-            <div className="flex gap-2">
+            <div className="flex flex-col gap-2">
               <Button variant="outline" className="w-full justify-start gap-2">
                 <AppStoreIcon />
                 <div>

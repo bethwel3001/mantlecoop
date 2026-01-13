@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { ModeToggle } from '@/components/mode-toggle';
 
@@ -128,6 +128,7 @@ export default function Home() {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
+                    <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
                     <div className="grid gap-4 p-4">
                         <Link href="#" className="flex items-center justify-center gap-2" prefetch={false}>
                             <Logo />

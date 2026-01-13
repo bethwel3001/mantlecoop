@@ -27,6 +27,7 @@ export function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-sm bg-card/80 backdrop-blur-sm border-border/20">
         <DialogHeader className="items-center text-center space-y-2 pt-4">
+          <DialogTitle className="sr-only">User Profile</DialogTitle>
           {activeTab === 'profile' && (
             <>
               <div className="relative">
@@ -47,7 +48,7 @@ export function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
                 </Button>
               </div>
               <div className="space-y-0.5">
-                  <DialogTitle className="font-headline text-xl">John Doe</DialogTitle>
+                  <h2 className="font-headline text-xl">John Doe</h2>
                   <DialogDescription>
                       john.doe@example.com
                   </DialogDescription>

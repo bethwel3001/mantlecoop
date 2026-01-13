@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -20,36 +21,42 @@ interface ProfileModalProps {
 }
 
 export function ProfileModal({ open, onOpenChange }: ProfileModalProps) {
+  const [activeTab, setActiveTab] = useState('profile');
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-sm bg-card/80 backdrop-blur-sm border-border/20">
         <DialogHeader className="items-center text-center space-y-2 pt-4">
-           <div className="relative">
-              <Avatar className="h-20 w-20 border-4 border-background">
-                <AvatarImage
-                  src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjgyMzk0NDl8MA&ixlib=rb-4.1.0&q=80&w=200"
-                  alt="John Doe"
-                />
-                <AvatarFallback>JD</AvatarFallback>
-              </Avatar>
-              <Button
-                size="icon"
-                variant="outline"
-                className="absolute bottom-0 right-0 h-7 w-7 rounded-full"
-              >
-                <Camera className="h-3 w-3" />
-                <span className="sr-only">Change picture</span>
-              </Button>
-            </div>
-            <div className="space-y-0.5">
-                <DialogTitle className="font-headline text-xl">John Doe</DialogTitle>
-                <DialogDescription>
-                    john.doe@example.com
-                </DialogDescription>
-            </div>
+          {activeTab === 'profile' && (
+            <>
+              <div className="relative">
+                <Avatar className="h-20 w-20 border-4 border-background">
+                  <AvatarImage
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxwZXJzb24lMjBwb3J0cmFpdHxlbnwwfHx8fDE3NjgyMzk0NDl8MA&ixlib=rb-4.1.0&q=80&w=200"
+                    alt="John Doe"
+                  />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
+                <Button
+                  size="icon"
+                  variant="outline"
+                  className="absolute bottom-0 right-0 h-7 w-7 rounded-full"
+                >
+                  <Camera className="h-3 w-3" />
+                  <span className="sr-only">Change picture</span>
+                </Button>
+              </div>
+              <div className="space-y-0.5">
+                  <DialogTitle className="font-headline text-xl">John Doe</DialogTitle>
+                  <DialogDescription>
+                      john.doe@example.com
+                  </DialogDescription>
+              </div>
+            </>
+          )}
         </DialogHeader>
 
-        <Tabs defaultValue="profile" className="w-full">
+        <Tabs defaultValue="profile" onValueChange={setActiveTab} className="w-full">
             <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="profile">Profile</TabsTrigger>
                 <TabsTrigger value="password">Password</TabsTrigger>

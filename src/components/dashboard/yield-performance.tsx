@@ -8,7 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { ChartTooltipContent } from '@/components/ui/chart';
+import { ChartContainer, ChartTooltipContent } from '@/components/ui/chart';
 
 const data = [
   { month: 'Jan', yield: 4.5 },
@@ -25,6 +25,13 @@ const data = [
   { month: 'Dec', yield: 6.2 },
 ];
 
+const chartConfig = {
+  yield: {
+    label: 'Yield',
+    color: 'hsl(var(--primary))',
+  },
+};
+
 export function YieldPerformance() {
   return (
     <Card className="bg-card/70 border-border/50 backdrop-blur-sm">
@@ -36,26 +43,28 @@ export function YieldPerformance() {
       </CardHeader>
       <CardContent>
         <div className="h-[300px] w-full">
-          <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border) / 0.5)" />
-              <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
-              <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}%`} />
-              <Tooltip
-                cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 2, strokeDasharray: '3 3' }}
-                content={<ChartTooltipContent indicator="line" />}
-                wrapperStyle={{ backdropFilter: 'blur(4px)', background: 'hsl(var(--background) / 0.5)', border: '1px solid hsl(var(--border))', borderRadius: 'var(--radius)' }}
-              />
-              <Line
-                type="monotone"
-                dataKey="yield"
-                stroke="hsl(var(--primary))"
-                strokeWidth={2}
-                dot={{ r: 4, fill: 'hsl(var(--primary))' }}
-                activeDot={{ r: 8, style: { filter: 'drop-shadow(0 0 8px hsl(var(--primary)))' } }}
-              />
-            </LineChart>
-          </ResponsiveContainer>
+          <ChartContainer config={chartConfig} className="h-full w-full">
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={data} margin={{ top: 5, right: 10, left: -10, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border) / 0.5)" />
+                <XAxis dataKey="month" stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} />
+                <YAxis stroke="hsl(var(--muted-foreground))" fontSize={12} tickLine={false} axisLine={false} tickFormatter={(value) => `${value}%`} />
+                <Tooltip
+                  cursor={{ stroke: 'hsl(var(--primary))', strokeWidth: 2, strokeDasharray: '3 3' }}
+                  content={<ChartTooltipContent indicator="line" />}
+                  wrapperStyle={{ backdropFilter: 'blur(4px)', background: 'hsl(var(--background) / 0.5)', border: '1px solid hsl(var(--border))', borderRadius: 'var(--radius)' }}
+                />
+                <Line
+                  type="monotone"
+                  dataKey="yield"
+                  stroke="var(--color-yield)"
+                  strokeWidth={2}
+                  dot={{ r: 4, fill: 'var(--color-yield)' }}
+                  activeDot={{ r: 8, style: { filter: 'drop-shadow(0 0 8px hsl(var(--primary)))' } }}
+                />
+              </LineChart>
+            </ResponsiveContainer>
+          </ChartContainer>
         </div>
       </CardContent>
     </Card>

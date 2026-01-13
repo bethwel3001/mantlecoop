@@ -1,18 +1,12 @@
 'use client';
 
-import Image from 'next/image';
 import {
-  ChevronsRight,
-  CircleDollarSign,
   Coins,
   Gauge,
-  Landmark,
-  ShieldCheck,
-  User,
-  Wallet,
   LogOut,
   History,
-  Building
+  Building,
+  Wallet
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -24,8 +18,6 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
-  SidebarGroup,
-  SidebarGroupLabel,
 } from '@/components/ui/sidebar';
 import { Separator } from '../ui/separator';
 
@@ -63,7 +55,7 @@ export function AppSidebar() {
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.href}>
               <Link href={item.href} passHref>
-                <SidebarMenuButton tooltip={item.label} isActive={pathname.startsWith(item.href)} className="group">
+                <SidebarMenuButton tooltip={item.label} isActive={pathname === item.href} className="group">
                   <item.icon className="group-data-[active=true]:text-primary group-data-[active=true]:drop-shadow-[0_0_5px_theme(colors.primary)]" />
                   <span>{item.label}</span>
                 </SidebarMenuButton>
@@ -74,16 +66,7 @@ export function AppSidebar() {
       </SidebarContent>
       <SidebarFooter>
         <Separator className="my-2" />
-        <SidebarGroup>
-          <SidebarMenu>
-             <SidebarMenuItem>
-                <Link href="/dashboard/profile" passHref>
-                    <SidebarMenuButton tooltip="Profile" isActive={pathname === '/dashboard/profile'}>
-                        <User />
-                        <span>Profile</span>
-                    </SidebarMenuButton>
-                </Link>
-            </SidebarMenuItem>
+        <SidebarMenu>
             <SidebarMenuItem>
                 <Link href="/login" passHref>
                     <SidebarMenuButton tooltip="Logout">
@@ -92,8 +75,7 @@ export function AppSidebar() {
                     </SidebarMenuButton>
                 </Link>
             </SidebarMenuItem>
-          </SidebarMenu>
-        </SidebarGroup>
+        </SidebarMenu>
       </SidebarFooter>
     </Sidebar>
   );

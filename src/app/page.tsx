@@ -1,6 +1,6 @@
-import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
 
 const Logo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -42,6 +42,32 @@ const EthereumIcon = () => (
     </svg>
 );
 
+const partners = [
+  {
+    name: 'Metamask',
+    logo: <MetamaskIcon />,
+  },
+  {
+    name: 'Base',
+    logo: <BaseIcon />,
+  },
+  {
+    name: 'Ethereum',
+    logo: <EthereumIcon />,
+  },
+  {
+    name: 'Metamask',
+    logo: <MetamaskIcon />,
+  },
+  {
+    name: 'Base',
+    logo: <BaseIcon />,
+  },
+  {
+    name: 'Ethereum',
+    logo: <EthereumIcon />,
+  },
+];
 
 export default function Home() {
   return (
@@ -136,25 +162,8 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12 sm:grid-cols-2 md:grid-cols-3 lg:gap-12">
-              <div className="flex justify-center">
-                <MetamaskIcon />
-              </div>
-              <div className="flex justify-center">
-                <BaseIcon />
-              </div>
-              <div className="flex justify-center">
-                <EthereumIcon />
-              </div>
-              <div className="flex justify-center">
-                <MetamaskIcon />
-              </div>
-              <div className="flex justify-center">
-                <BaseIcon />
-              </div>
-              <div className="flex justify-center">
-                <EthereumIcon />
-              </div>
+            <div className="mx-auto grid max-w-5xl items-center gap-6 py-12">
+               <InfiniteMovingCards items={partners.map(p => p.logo)} direction="right" speed="slow" />
             </div>
           </div>
         </section>

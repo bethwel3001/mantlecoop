@@ -6,7 +6,7 @@ import { AILoanTool } from '@/components/dashboard/ai-loan-tool';
 
 export default function DashboardPage() {
   return (
-    <main className="p-4 sm:p-6 lg:p-8 space-y-8">
+    <div className="space-y-8">
         <OverviewCards />
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-3">
@@ -24,6 +24,6 @@ export default function DashboardPage() {
             <AILoanTool />
           </div>
         </div>
-    </main>
+    </div>
   );
 }

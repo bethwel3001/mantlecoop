@@ -1,3 +1,4 @@
+import React from 'react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { InfiniteMovingCards } from '@/components/ui/infinite-moving-cards';
@@ -163,7 +164,7 @@ export default function Home() {
               </div>
             </div>
             <div className="mx-auto grid max-w-5xl items-center gap-6 py-12">
-               <InfiniteMovingCards items={partners.map(p => p.logo)} direction="right" speed="slow" />
+               <InfiniteMovingCards items={partners.map((p, i) => React.cloneElement(p.logo, { key: `${p.name}-${i}` }))} direction="right" speed="slow" />
             </div>
           </div>
         </section>

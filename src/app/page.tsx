@@ -128,7 +128,9 @@ export default function Home() {
                     </Button>
                 </SheetTrigger>
                 <SheetContent side="right">
-                    <SheetTitle className="sr-only">Mobile Menu</SheetTitle>
+                    <SheetTitle>
+                        <span className="sr-only">Mobile Menu</span>
+                    </SheetTitle>
                     <div className="grid gap-4 p-4">
                         <Link href="#" className="flex items-center justify-center gap-2" prefetch={false}>
                             <Logo />
@@ -167,20 +169,22 @@ export default function Home() {
               </p>
             </div>
             <div className="mt-6 flex flex-col gap-2 min-[400px]:flex-row justify-center">
-              <Link
-                href="/login"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 glow-primary-hover"
-                prefetch={false}
-              >
-                Join Now
-              </Link>
-              <Link
-                href="#about"
-                className="inline-flex h-10 items-center justify-center rounded-md border border-input bg-background px-8 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-                prefetch={false}
-              >
-                Learn More
-              </Link>
+              <Button asChild className="glow-primary-hover">
+                <Link
+                  href="/login"
+                  prefetch={false}
+                >
+                  Join Now
+                </Link>
+              </Button>
+              <Button asChild variant="outline">
+                <Link
+                  href="#about"
+                  prefetch={false}
+                >
+                  Learn More
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -244,13 +248,14 @@ export default function Home() {
               </p>
             </div>
             <div className="mx-auto w-full max-w-sm space-y-2">
-               <Link
-                href="/login"
-                className="inline-flex h-10 items-center justify-center rounded-md bg-primary px-8 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 w-full glow-primary-hover"
-                prefetch={false}
-              >
-                Explore
-              </Link>
+              <Button asChild className="w-full glow-primary-hover">
+                <Link
+                  href="/login"
+                  prefetch={false}
+                >
+                  Explore
+                </Link>
+              </Button>
             </div>
           </div>
         </section>
@@ -289,7 +294,7 @@ export default function Home() {
           <div className="space-y-4">
             <h4 className="font-semibold">Mobile App Coming Soon</h4>
             <p className="text-sm text-muted-foreground">Get notified when our mobile app is available.</p>
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 max-w-[200px]">
               <Button variant="outline" className="w-full justify-start gap-2">
                 <AppStoreIcon />
                 <div>

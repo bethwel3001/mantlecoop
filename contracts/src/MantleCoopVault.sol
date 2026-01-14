@@ -4,8 +4,8 @@ pragma solidity ^0.8.20;
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC4626.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
-import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
+import "@openzeppelin/contracts/utils/ReentrancyGuard.sol";
+import "@openzeppelin/contracts/utils/Pausable.sol";
 import "./Interfaces.sol";
 
 /**
@@ -266,11 +266,11 @@ contract MantleCoopVault is ERC4626, AccessControl, ReentrancyGuard, Pausable {
         if (timeElapsed == 0) return 0;
         
         uint256 averageYieldPerSecond = totalYieldEarned / timeElapsed;
-        uint256 totalAssets = totalAssets();
+        uint256 vaultTotalAssets = totalAssets();
         
-        if (totalAssets == 0) return 0;
+        if (vaultTotalAssets == 0) return 0;
         
-        return (averageYieldPerSecond * 365 days * 10000) / totalAssets;
+        return (averageYieldPerSecond * 365 days * 10000) / vaultTotalAssets;
     }
     
     function getVaultStats() external view returns (

@@ -9,7 +9,7 @@ import {
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { ArrowUpRight, Copy, Plus, Minus, QrCode } from 'lucide-react';
+import { ArrowUpRight, ArrowDownLeft, Copy, Plus, Minus, QrCode } from 'lucide-react';
 import {
   Table,
   TableBody,

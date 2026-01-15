@@ -28,17 +28,17 @@ const Logo = () => (
   </svg>
 );
 
-export function AppSidebar() {
-  const pathname = usePathname();
-
-  const menuItems = [
+export const menuItems = [
     { href: '/dashboard', icon: Gauge, label: 'Dashboard' },
     { href: '/dashboard/yield', icon: Coins, label: 'Yield' },
     { href: '/dashboard/lending-history', icon: History, label: 'Lending History' },
     { href: '/dashboard/payment-history', icon: History, label: 'Payment History' },
     { href: '/dashboard/cooperatives', icon: Building, label: 'Cooperatives' },
     { href: '/dashboard/wallet', icon: Wallet, label: 'My Wallet' },
-  ];
+];
+
+export function AppSidebar() {
+  const pathname = usePathname();
 
   return (
     <Sidebar>

@@ -5,6 +5,7 @@
 out/
 cache/
 broadcast/
+lib/
 
 # Node
 node_modules/

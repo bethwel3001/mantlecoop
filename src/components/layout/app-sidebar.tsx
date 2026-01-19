@@ -18,6 +18,7 @@ import {
   SidebarMenu,
   SidebarMenuItem,
   SidebarMenuButton,
+  useSidebar,
 } from '@/components/ui/sidebar';
 import { Separator } from '../ui/separator';
 
@@ -28,17 +29,18 @@ const Logo = () => (
   </svg>
 );
 
-export function AppSidebar() {
-  const pathname = usePathname();
-
-  const menuItems = [
+export const menuItems = [
     { href: '/dashboard', icon: Gauge, label: 'Dashboard' },
     { href: '/dashboard/yield', icon: Coins, label: 'Yield' },
     { href: '/dashboard/lending-history', icon: History, label: 'Lending History' },
     { href: '/dashboard/payment-history', icon: History, label: 'Payment History' },
     { href: '/dashboard/cooperatives', icon: Building, label: 'Cooperatives' },
     { href: '/dashboard/wallet', icon: Wallet, label: 'My Wallet' },
-  ];
+];
+
+export function AppSidebar() {
+  const pathname = usePathname();
+  const { setOpenMobile } = useSidebar();
 
   return (
     <Sidebar>
@@ -55,7 +57,7 @@ export function AppSidebar() {
           {menuItems.map((item) => (
             <SidebarMenuItem key={item.href}>
               <Link href={item.href} passHref>
-                <SidebarMenuButton tooltip={item.label} isActive={pathname === item.href} className="group">
+                <SidebarMenuButton tooltip={item.label} isActive={pathname === item.href} className="group" onClick={() => setOpenMobile(false)}>
                   <item.icon className="group-data-[active=true]:text-primary group-data-[active=true]:drop-shadow-[0_0_5px_theme(colors.primary)]" />
                   <span>{item.label}</span>
                 </SidebarMenuButton>
@@ -69,7 +71,7 @@ export function AppSidebar() {
         <SidebarMenu>
             <SidebarMenuItem>
                 <Link href="/login" passHref>
-                    <SidebarMenuButton tooltip="Logout">
+                    <SidebarMenuButton tooltip="Logout" onClick={() => setOpenMobile(false)}>
                         <LogOut />
                         <span>Logout</span>
                     </SidebarMenuButton>

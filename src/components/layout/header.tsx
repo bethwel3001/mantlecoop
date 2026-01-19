@@ -13,16 +13,23 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { ProfileModal } from '../dashboard/profile-modal';
+import { usePathname } from 'next/navigation';
+import { menuItems } from './app-sidebar';
 
 export function Header() {
   const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+  const pathname = usePathname();
+  
+  const currentPage = menuItems.find(item => item.href === pathname);
+  const pageTitle = currentPage ? currentPage.label : 'Dashboard';
+
   return (
     <>
       <header className="sticky top-0 z-10 flex h-16 items-center justify-between gap-4 border-b bg-background/80 px-4 backdrop-blur-sm sm:px-6 lg:px-8">
         <div className="flex items-center gap-4">
           <SidebarTrigger className="md:hidden" />
           <h1 className="text-xl font-headline font-semibold hidden md:block">
-            Dashboard
+            {pageTitle}
           </h1>
         </div>
         <div className="flex items-center gap-4">

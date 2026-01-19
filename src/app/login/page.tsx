@@ -7,6 +7,9 @@ import { Label } from '@/components/ui/label';
 import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { Wallet } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 const GoogleIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -27,6 +30,14 @@ const XIcon = () => (
 
 export default function LoginPage() {
   const [isSignUp, setIsSignUp] = useState(false);
+  const { address, isConnected } = useAccount();
+  const { connectors, connect } = useConnect();
+  const { disconnect } = useDisconnect();
+  const router = useRouter();
+
+  if (isConnected && address) {
+    router.push('/dashboard');
+  }
 
   const cardVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -67,9 +78,18 @@ export default function LoginPage() {
                     <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">OR</span>
                 </div>
 
-                <div className="flex justify-center gap-4">
-                  <Button variant="outline" size="icon" className="h-9 w-9"><GoogleIcon /></Button>
-                  <Button variant="outline" size="icon" className="h-9 w-9"><XIcon /></Button>
+                <div className="flex flex-col gap-2">
+                  {connectors.map((connector) => (
+                    <Button
+                      key={connector.id}
+                      onClick={() => connect({ connector })}
+                      variant="outline"
+                      className="w-full gap-2"
+                    >
+                      <Wallet className="h-4 w-4" />
+                      {connector.name}
+                    </Button>
+                  ))}
                 </div>
                 <div className="text-center text-sm mt-3">
                   Already have an account?{' '}
@@ -104,9 +124,18 @@ export default function LoginPage() {
                     <span className="absolute left-1/2 -translate-x-1/2 -top-2.5 bg-card px-2 text-xs text-muted-foreground">OR</span>
                 </div>
 
-                <div className="flex justify-center gap-4">
-                  <Button variant="outline" size="icon" className="h-9 w-9"><GoogleIcon /></Button>
-                  <Button variant="outline" size="icon" className="h-9 w-9"><XIcon /></Button>
+                <div className="flex flex-col gap-2">
+                  {connectors.map((connector) => (
+                    <Button
+                      key={connector.id}
+                      onClick={() => connect({ connector })}
+                      variant="outline"
+                      className="w-full gap-2"
+                    >
+                      <Wallet className="h-4 w-4" />
+                      {connector.name}
+                    </Button>
+                  ))}
                 </div>
 
                 <div className="text-center text-sm mt-3">

@@ -5,6 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Sheet, SheetContent, SheetTitle, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { ModeToggle } from '@/components/mode-toggle';
+import { ConnectWallet } from '@/components/connect-wallet';
 
 const Logo = () => (
   <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -117,6 +118,7 @@ export default function Home() {
           <Link href="#explore" className="text-sm font-medium hover:underline underline-offset-4" prefetch={false}>
             Explore
           </Link>
+          <ConnectWallet />
           <ModeToggle />
         </nav>
         <div className="ml-auto md:hidden">
